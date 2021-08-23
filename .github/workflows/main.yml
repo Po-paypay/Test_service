@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  pull_request:
+    branches: master
+
+jobs:
+  trigger_buildkite:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Buildkite Pipeline
+        uses: buildkite/trigger-pipeline-action@v1.2.0
+        env:
+          BUILDKITE_API_ACCESS_TOKEN: ${{ secrets.BUILDKITE_API_ACCESS_TOKEN }}
+          PIPELINE: "Paypay/Po_test_pipeline"
